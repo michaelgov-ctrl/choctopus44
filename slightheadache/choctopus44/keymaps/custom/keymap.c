@@ -60,6 +60,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
-    clockwise ? tap_code(KC_VOLU) : tap_code(KC_VOLD);
-    return true;
+  if (clockwise) {
+    tap_code(KC_VOLD);
+  } else {
+    tap_code(KC_VOLU);
+  }
+  return false;
 }
